@@ -478,6 +478,31 @@ body {
   }
 }
 
+/* Mobile product grid fix */
+@media(max-width: 600px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* Show 2 items per row */
+    gap: 15px;
+  }
+
+  .product-card img {
+    width: 100px !important;  /* reduce image size */
+    height: auto;
+  }
+
+  .product-card {
+    padding: 15px;
+  }
+
+  .product-card h3 {
+    font-size: 14px;
+  }
+
+  .product-card button {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
 @media (max-width: 600px) {
   .slide {
       height: 180px;
@@ -485,4 +510,5 @@ body {
   .product-grid {
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
+
 }
