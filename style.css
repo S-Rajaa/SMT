@@ -177,7 +177,7 @@ body {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjusted min-width for better display */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Default for larger screens */
   gap: 20px; /* Increased gap */
   max-width: 1200px;
   margin: 0 auto;
@@ -213,9 +213,11 @@ body {
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
+/* Updated product image styles for responsiveness */
 .product-card img {
   width: 100%;
-  height: 160px; /* Slightly taller image area */
+  max-height: 160px; 
+  height: auto;      
   object-fit: contain;
   margin-bottom: 10px;
 } 
@@ -473,6 +475,7 @@ body {
       height: 300px; /* Adjusted height for mobile tablets */
   }
 
+  /* --- ADJUSTED FOR 2 COLUMNS ON TABLETS/LARGER PHONES --- */
   .product-grid {
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
@@ -482,28 +485,22 @@ body {
   .slide {
       height: 180px;
   }
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr); /* Show 2 items per row */
-    gap: 15px;
+  
+  /* --- CRITICAL FIX: FOR SMALLER PHONES (e.g., < 600px), force 1 column --- */
+  .product-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Use a larger min-width to force 1 column or 2 columns based on screen width */
+      /* Since the grid container is full width and the minmax is 200px, 
+         screens < 400px will likely show 1 column. 
+         A dedicated 1-column setting is often better for very small screens. */
   }
-
-  .product-card img {
-    width: 100px !important;  /* reduce image size */
-    height: auto;
-  }
-
-  .product-card {
-    padding: 15px;
-  }
-
-  .product-card h3 {
-    font-size: 14px;
-  }
-
-  .product-card button {
-    padding: 8px 12px;
-    font-size: 12px;
-  }
-
 }
 
+/* --- DEDICATED MOBILE VIEW FOR 1 PRODUCT PER ROW (BELOW 450PX) --- */
+@media (max-width: 450px) {
+    .product-grid {
+        /* Set minmax to a value greater than half the viewport width to force a single column. */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        max-width: 350px; /* Optional: limit width slightly to center better */
+        margin: 0 auto;
+    }
+}
