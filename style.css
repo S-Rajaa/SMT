@@ -478,8 +478,10 @@ body {
   }
 }
 
-/* Mobile product grid fix */
-@media(max-width: 600px) {
+@media (max-width: 600px) {
+  .slide {
+      height: 180px;
+  }
   .products-grid {
     grid-template-columns: repeat(2, 1fr); /* Show 2 items per row */
     gap: 15px;
@@ -502,13 +504,6 @@ body {
     padding: 8px 12px;
     font-size: 12px;
   }
-}
-@media (max-width: 600px) {
-  .slide {
-      height: 180px;
-  }
-  .product-grid {
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
 
 }
+
